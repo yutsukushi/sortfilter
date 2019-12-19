@@ -1,0 +1,12 @@
+.list-overflow-container {
+    width: 100%;
+    border: none;
+}
+
+.list-group {
+    display: inline;
+}
+
+.list-group-item {
+    float: left;
+}
