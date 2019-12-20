@@ -8,12 +8,13 @@ export default function Navbar({ onChange }) {
         <div className="jumbotron jumbotron-fluid">
             <div className="container">
                 <h1 className="display-4 title">Lists</h1>
-                <div class="dropdown" style={{float: "right", clear: "right"}}>
+                <div className="dropdown" style={{float: "right", clear: "right"}}>
                     <div className="sortText">Sort by:
-                        <form>
+                        <form onChange={onChange}>
                             <select
-                            onChange={onChange}
+                            
                             className="searchBar">
+                            <option value="default">Sort List</option>
                             <option value="ascend">Sort List(A - Z)</option>
                             <option value="descend">Sort List(Z - A)</option>
                             </select>

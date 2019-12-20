@@ -11,8 +11,9 @@ class SortList extends Component {
         super();
         this.state = {
             Products: [],
-            sort: ""
+            sortedList: []
         }
+        this.sortFilter = this.sortFilter.bind(this);
     }
 
     // fetch data function
@@ -22,50 +23,38 @@ class SortList extends Component {
             return res.json();
         }).then(data => {
             this.setState({Products: data});
-            console.log("state", this.state.Products);
+            console.log("state", this.state.Products[0].Name);
         })
     }
 
-    // handleView(event) {
-    //     console.log("hello")
+    handleView() {
+        console.log("hello")
+    }
+
+    // displayFour() {
+    //     let epartsProduct = this.state.Products
+    //     for (let i = 0; i < 3; i++) {
+    //         return <p key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p>
+    //     }
     // }
 
     sortFilter(e) {
-        console.log("clicked ascend");
-        // https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+        // Credit to: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
 
-        let option = e.target.value;
-        let cardNames = this.state.Products;
-        let sortedList = cardNames.sort((a, b) => {
-           let nameOne = a.Name.toLowerCase();
+        let value = e.target.value;
+        let productsArr = this.state.Products;
+
+        productsArr.sort((a,b) => {
+            let nameOne = a.Name.toLowerCase();
            let nameTwo = b.Name.toLowerCase();
+           if (value === "ascend") {
+                return (nameOne < nameTwo) ? -1 : (nameOne > nameTwo) ? 1 : 0;
+           } else if (value === "descend") {
+               return (nameOne < nameTwo) ? 1 : (nameOne > nameTwo) ? -1 : 0;
+           }
+        })
 
-           if (option === "ascend") {
-
-            
-
-            if (nameOne < nameTwo) {
-               return -1;
-            } else if (nameOne > nameTwo) {
-                return 1;
-            }
-
-           return 0;
-
-        } else if (option === "descend") {
-            
-            console.log("clicked descend");
-            if (nameOne < nameTwo) {
-                return 1;
-            } else if (nameOne > nameTwo) {
-                return -1;
-            }
- 
-            return 0;
- 
-        }})
-        
-        this.setState({Products: sortedList })
+        this.setState({sortedList: productsArr })
     }
     
     render() {
@@ -74,7 +63,7 @@ class SortList extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="header">
-                            <Navbar sort={this.state.sort}
+                            <Navbar
                             onChange={this.sortFilter}/>
                         </div>
                     </div>
@@ -89,8 +78,9 @@ class SortList extends Component {
                                         name={card.Name}
                                         createdate={card.CreatedDate}
                                         products={card.Products.map(epartsProduct => (
-                                            <p 
+                                        <p 
                                             key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p> 
+                                            
                                         ))}
                                         total={card.Total}
                                         items={card.TotalItems}
