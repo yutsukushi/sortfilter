@@ -24,6 +24,7 @@ class SortList extends Component {
             return res.json();
         }).then(data => {
             this.setState({Products: data});
+            console.log("state", this.state.Products)
         })
     }
 
@@ -83,7 +84,7 @@ class SortList extends Component {
                                 name={card.Name}
                                 createdate={moment(card.CreatedDate).format("MM/DD/YYYY")}
                                 products={card.Products.map(epartsProduct => (
-                                <p key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}
+                                <p key={epartsProduct.LineNumber}>{epartsProduct.ProductNumber}
                                 </p> 
                                 ))}
                                 total={card.Total}
