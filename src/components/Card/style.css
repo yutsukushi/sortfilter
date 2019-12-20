@@ -1,4 +1,64 @@
 .card {
-    width: 18rem;
+    width: 20rem;
     display: inline-flex;
+}
+
+.pushpin-icon {
+    width: 18px;
+    height: 18px;
+    float: right;
+    clear: right;
+}
+
+.card-title {
+    color: rgb(34,114,160);
+    font-size: 16px;
+}
+
+.createddate {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
+Button {
+    background-color:rgb(229,105,11);
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+/* Button:hover {
+    background-color:rgb(207, 96, 10);
+    
+} */
+
+.total {
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.card-subtitle {
+    font-size: 14px;
+}
+
+hr {
+    margin: 5px auto;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.2)
+}
+
+form {
+    float: right; 
+    clear: right;
 }

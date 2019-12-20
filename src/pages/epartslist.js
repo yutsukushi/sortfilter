@@ -10,7 +10,8 @@ class SortList extends Component {
     constructor() {
         super();
         this.state = {
-            Products: []
+            Products: [],
+            sort: ""
         }
     }
 
@@ -29,14 +30,17 @@ class SortList extends Component {
     //     console.log("hello")
     // }
 
-    sortFilter() {
+    sortFilter(e) {
+        let option = e.target.value;
         let cardNames = this.state.Products;
-        cardNames.sort((a, b) => {
+        let sortedList = cardNames.sort((a, b) => {
            let nameOne = a.Name.toLowerCase();
            let nameTwo = b.Name.toLowerCase();
 
         // if ($(".dropdown-item")=="aToZ") {
-           if (nameOne < nameTwo) {
+           if (option === "ascend") {
+
+            if (nameOne < nameTwo) {
                return -1;
            } else if (nameOne > nameTwo) {
                return 1;
@@ -46,19 +50,19 @@ class SortList extends Component {
 
         //    https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
 
-        // } else if (value=="zToA") {
-        //     if (nameOne < nameTwo) {
-        //         return 1;
-        //     } else if (nameOne > nameTwo) {
-        //         return -1;
-        //     }
+        } else if (option === "descend") {
+            
+            if (nameOne < nameTwo) {
+                return -1;
+            } else if (nameOne > nameTwo) {
+                return 1;
+            }
  
-        //     return 0;
-        // }
-        // evaluate first letter 
-        // sort alphabetical order
-        // if empty string, display last
-        })
+            return 0;
+ 
+        }})
+        
+        this.setState({Products: sortedList })
     }
     
     render() {
@@ -67,7 +71,8 @@ class SortList extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="header">
-                            <Navbar/>
+                            <Navbar sort={this.state.sort}
+                            onChange={this.sortFilter}/>
                         </div>
                     </div>
                 </div>
@@ -82,7 +87,7 @@ class SortList extends Component {
                                         createdate={card.CreatedDate}
                                         products={card.Products.map(epartsProduct => (
                                             <p 
-                                            key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p>
+                                            key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p> 
                                         ))}
                                         total={card.Total}
                                         items={card.TotalItems}
