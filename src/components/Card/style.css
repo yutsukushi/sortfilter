@@ -38,10 +38,10 @@ Button {
     cursor: pointer;
 }
 
-/* Button:hover {
+Button:hover {
     background-color:rgb(207, 96, 10);
     
-} */
+}
 
 .total {
     text-align: center;

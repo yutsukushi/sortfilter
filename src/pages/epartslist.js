@@ -31,31 +31,34 @@ class SortList extends Component {
     // }
 
     sortFilter(e) {
+        console.log("clicked ascend");
+        // https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+
         let option = e.target.value;
         let cardNames = this.state.Products;
         let sortedList = cardNames.sort((a, b) => {
            let nameOne = a.Name.toLowerCase();
            let nameTwo = b.Name.toLowerCase();
 
-        // if ($(".dropdown-item")=="aToZ") {
            if (option === "ascend") {
+
+            
 
             if (nameOne < nameTwo) {
                return -1;
-           } else if (nameOne > nameTwo) {
-               return 1;
-           }
+            } else if (nameOne > nameTwo) {
+                return 1;
+            }
 
            return 0;
 
-        //    https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
-
         } else if (option === "descend") {
             
+            console.log("clicked descend");
             if (nameOne < nameTwo) {
-                return -1;
-            } else if (nameOne > nameTwo) {
                 return 1;
+            } else if (nameOne > nameTwo) {
+                return -1;
             }
  
             return 0;

@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css"
 
-export default function Navbar({sortFilter}) {
+export default function Navbar({ onChange }) {
 
     return (
         <div className="jumbotron jumbotron-fluid">
@@ -12,7 +12,7 @@ export default function Navbar({sortFilter}) {
                     <div className="sortText">Sort by:
                         <form>
                             <select
-                            onChange={sortFilter}
+                            onChange={onChange}
                             className="searchBar">
                             <option value="ascend">Sort List(A - Z)</option>
                             <option value="descend">Sort List(Z - A)</option>
