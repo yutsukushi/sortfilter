@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import moment from "moment"
+import moment from "moment"
 import Navbar from "../components/Navbar";
 import Card from "../components/Card"
 // import { Button } from "react-bootstrap"
@@ -14,6 +14,7 @@ class SortList extends Component {
             sortedList: []
         }
         this.sortFilter = this.sortFilter.bind(this);
+        // this.displayFour = this.displayFour.bind(this);
     }
 
     // fetch data function
@@ -32,10 +33,17 @@ class SortList extends Component {
     }
 
     // displayFour() {
-    //     let epartsProduct = this.state.Products
+    //     let epartsProduct = this.state.Products;
     //     for (let i = 0; i < 3; i++) {
     //         return <p key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p>
     //     }
+    // }
+
+    // convertDate() {
+    //     const moment = require('moment');
+
+    //     let unixDate = this.state.Products.CreatedDate;
+    //     let date = moment(unixDate).format('L');
     // }
 
     sortFilter(e) {
@@ -76,11 +84,10 @@ class SortList extends Component {
                                     key={card.ListID}>
                                         <Card
                                         name={card.Name}
-                                        createdate={card.CreatedDate}
+                                        createdate={moment(card.CreatedDate).format("MM/DD/YYYY")}
                                         products={card.Products.map(epartsProduct => (
-                                        <p 
-                                            key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}</p> 
-                                            
+                                        <p key={epartsProduct.ProductID}>{epartsProduct.ProductNumber}
+                                        </p> 
                                         ))}
                                         total={card.Total}
                                         items={card.TotalItems}
