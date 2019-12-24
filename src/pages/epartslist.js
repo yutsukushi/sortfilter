@@ -76,35 +76,35 @@ class SortList extends Component {
                 </div>
 
                 <div className="row">
-                    <List>
-                        {this.state.Products.map(card => (
-                            <ListItem
-                            key={card.ListID}>
-                                <Card
-                                name={card.Name}
-                                createdate={moment(card.CreatedDate).format("MM/DD/YYYY")}
-                                products={card.Products.map(epartsProduct => (
-                                <p key={epartsProduct.LineNumber}>{epartsProduct.ProductNumber}
-                                </p> 
-                                ))}
-                                total={card.Total}
-                                items={card.TotalItems}
-                                Button={() => (
-                                    <div className="button">
-                                        <button
-                                            data-id={card.ListID}
-                                            onClick={(event) => this.handleView(event)}
-                                        >
-                                            View List
-                                        </button>
-                                    </div>
-                                )} 
-                                />
-                            </ListItem>
-                        ))}
-                    </List>
+                        <List>
+                            {this.state.Products.map(card => (
+                                <ListItem
+                                key={card.ListID}>
+                                    <Card
+                                    name={card.Name}
+                                    createdate={moment(card.CreatedDate).format("MM/DD/YYYY")}
+                                    products={card.Products.map(epartsProduct => (
+                                    <p key={epartsProduct.LineNumber}>{epartsProduct.ProductNumber}
+                                    </p> 
+                                    ))}
+                                    total={card.Total}
+                                    items={card.TotalItems}
+                                    Button={() => (
+                                        <div className="button">
+                                            <button
+                                                data-id={card.ListID}
+                                                onClick={(event) => this.handleView(event)}
+                                            >
+                                                View List
+                                            </button>
+                                        </div>
+                                    )} 
+                                    />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </div>
                 </div>
-            </div>
         )
     }
 }

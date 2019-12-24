@@ -1,6 +1,7 @@
 .list-overflow-container {
-    width: 100%;
+    width: 90%;
     border: none;
+    margin: 0 auto;
 }
 
 .list-group {
